@@ -76,19 +76,28 @@ class _SpeechScreenState extends State<SpeechScreen> {
         duration: const Duration(milliseconds: 2000),
         repeat: true,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              _listen();
+            });
+          },
           child: Icon(_isListening ? Icons.mic : Icons.mic_none),
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: TextHighlight(
-            text: _text,
-            words: _highlights,
-            textStyle: const TextStyle(
-              fontSize: 32.0,
-              color: Colors.black,
-              fontWeight: FontWeight.w400,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Container(
+            height: 500,
+            color: Colors.red,
+            child: TextHighlight(
+              text: _text,
+              words: _highlights,
+              textStyle: const TextStyle(
+                fontSize: 32.0,
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
         ),
